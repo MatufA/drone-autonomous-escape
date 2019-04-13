@@ -1,0 +1,7 @@
+keyboard
+av
+pykalman
+pygame
+matplotlib
+opencv-python
+numpy
