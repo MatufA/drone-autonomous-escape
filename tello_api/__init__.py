@@ -1,1 +1,1 @@
-from ._internal import tello
+from ._internal import Tello
