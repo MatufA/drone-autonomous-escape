@@ -1,11 +1,11 @@
-from tello_api import tello
+from tello_api import Tello
 from drone_autonomous_escape import TrackObject, DroneVideo, KeyboardFly
 import time
 import threading
 # using library keyboard
 import keyboard
 
-drone = tello.Tello()
+drone = Tello()
 
 drone.connect()
 drone.wait_for_connection(60.0)
