@@ -1,9 +1,10 @@
-from tello_api import Tello
 from drone_autonomous_escape import TrackObject, DroneVideo, KeyboardFly
-import time
+from tello_api import Tello
 import threading
+import time
 # using library keyboard
 import keyboard
+import cv2
 
 drone = Tello()
 
@@ -60,6 +61,9 @@ while True:
     elif keyboard.is_pressed('5'):
         KF.start_control()
         KF.set_text("keyboard control")
+    elif keyboard.is_pressed('x'):
+        KF.set_text("End mission")
+        break
     if tracker.spot_target():
         KF.set_text("spoting target"
                     "press 4 to auto pylot")
