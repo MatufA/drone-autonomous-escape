@@ -28,9 +28,9 @@ class K_Filter(object):
         observation_matrix = [[1, 0, 0, 0],
                               [0, 0, 1, 0]]
 
-        kf1 = KalmanFilter(transition_matrices=transition_matrix,
-                           observation_matrices=observation_matrix,
-                           initial_state_mean=initial_state_mean)
+        self.kf1 = KalmanFilter(transition_matrices=transition_matrix,
+                                observation_matrices=observation_matrix,
+                                initial_state_mean=initial_state_mean)
         self.kf2 = KalmanFilter(transition_matrices=transition_matrix,
                                 observation_matrices=observation_matrix,
                                 initial_state_mean=initial_state_mean)

@@ -79,7 +79,7 @@ class TrackObject(object):
     def track(self):
 
         if self.new_track:
-            print("point: ", (self.x), (self.y), (self.z), (self.Yaw))
+            print("point: ", self.x, self.y, self.z, self.Yaw)
             if not self.side_check():
                 self.follow_right_left()
             if not self.height_check():

@@ -1,9 +1,10 @@
-import math
 import numpy as np
-import time
+import threading
 import cv2.aruco as aruco
 import cv2
-import threading
+import math
+import time
+import os
 
 
 class GetObject(object):
@@ -22,8 +23,8 @@ class GetObject(object):
         self.t_detect = 0
         self.fps_detect = 0
         self.new_val = False
-        self.camera_matrix = np.loadtxt(config.camera_lib_path + config.camera_metrix, delimiter=',')
-        self.camera_distortion = np.loadtxt(config.camera_lib_path + config.camera_distortion, delimiter=',')
+        self.camera_matrix = np.loadtxt(os.path.join(config.camera_lib_path, config.camera_metrix), delimiter=',')
+        self.camera_distortion = np.loadtxt(os.path.join(config.camera_lib_path, config.camera_distortion), delimiter=',')
         # 180 deg rotation matrix around the x axis
         self.R_flip = np.zeros((3, 3), dtype=np.float32)
         self.R_flip[0, 0] = 1.0

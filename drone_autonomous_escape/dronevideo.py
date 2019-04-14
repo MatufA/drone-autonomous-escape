@@ -21,7 +21,8 @@ class DroneVideo(object):
         self.vid = None
         self.grid = True
         self.new_val = False
-        self.object = GetObject(calibration=Config())
+        config = Config()
+        self.object = GetObject(config=config)
         self.object_coords = None
         self.out = None
         self.export_flag = False
