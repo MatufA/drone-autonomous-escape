@@ -109,4 +109,7 @@ venv.bak/
 # data
 data/
 *.jpg
+*.mp4
+*.avi
+*.txt
 drone_autonomous_escape/test_j*

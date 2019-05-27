@@ -8,7 +8,7 @@ from . import event
 from . import state
 from . import error
 from . import video_stream
-from . protocol import *
+from .protocol import *
 from . import dispatcher
 
 log = logger.Logger('Tello')
@@ -136,8 +136,8 @@ class Tello(object):
 
     def __send_conn_req(self):
         port = 9617
-        port0 = (int(port/1000) % 10) << 4 | (int(port/100) % 10)
-        port1 = (int(port/10) % 10) << 4 | (int(port/1) % 10)
+        port0 = (int(port / 1000) % 10) << 4 | (int(port / 100) % 10)
+        port1 = (int(port / 10) % 10) << 4 | (int(port / 1) % 10)
         buf = 'conn_req:%c%c' % (chr(port0), chr(port1))
         log.info('send connection request (cmd="%s%02x%02x")' % (str(buf[:-2]), port0, port1))
         return self.send_packet(Packet(buf))
@@ -564,33 +564,33 @@ class Tello(object):
         return True
 
     def recv_file_data(self, data):
-        (filenum,chunk,fragment,size) = struct.unpack('<HLLH', data[0:12])
+        (filenum, chunk, fragment, size) = struct.unpack('<HLLH', data[0:12])
         file = self.file_recv.get(filenum, None)
 
         # Preconditions.
         if file is None:
             return
 
-        if file.recvFragment(chunk, fragment, size, data[12:12+size]):
+        if file.recvFragment(chunk, fragment, size, data[12:12 + size]):
             # Did this complete a chunk? Ack the chunk so the drone won't
             # re-send it.
             self.send_packet_data(TELLO_CMD_FILE_DATA, type=0x50,
-                payload=struct.pack('<BHL', 0, filenum, chunk))
+                                  payload=struct.pack('<BHL', 0, filenum, chunk))
 
         if file.done():
             # We have the whole file! First, send a normal ack with the first
             # byte set to 1 to indicate file completion.
             self.send_packet_data(TELLO_CMD_FILE_DATA, type=0x50,
-                payload=struct.pack('<BHL', 1, filenum, chunk))
+                                  payload=struct.pack('<BHL', 1, filenum, chunk))
             # Then send the FILE_COMPLETE packed separately telling it how
             # large we thought the file was.
             self.send_packet_data(TELLO_CMD_FILE_COMPLETE, type=0x48,
-                payload=struct.pack('<HL', filenum, file.size))
+                                  payload=struct.pack('<HL', filenum, file.size))
             # Inform subscribers that we have a file and clean up.
             self.__publish(event=self.EVENT_FILE_RECEIVED, data=file.data())
             del self.file_recv[filenum]
 
-    def record_log_data(self, path = None):
+    def record_log_data(self, path=None):
         if path == None:
             path = '%s/Documents/tello-%s.dat' % (
                 os.getenv('HOME'),
@@ -651,7 +651,6 @@ class Tello(object):
             self.connected.clear()
 
     def __recv_thread(self):
-
 
         sock = self.sock
 
@@ -715,7 +714,7 @@ class Tello(object):
                 prev_ts = now
 
                 # save video data history
-                history.append([now, len(data), byte(data[0])*256 + byte(data[1])])
+                history.append([now, len(data), byte(data[0]) * 256 + byte(data[1])])
                 if 100 < len(history):
                     history = history[1:]
 
@@ -723,10 +722,10 @@ class Tello(object):
                 if show_history:
                     prev_ts = history[0][0]
                     for i in range(1, len(history)):
-                        [ ts, sz, sn ] = history[i]
+                        [ts, sz, sn] = history[i]
                         print('    %02d:%02d:%02d.%03d %4d bytes %04x +%03d%s' %
-                              (ts.hour, ts.minute, ts.second, ts.microsecond/1000,
-                               sz, sn, (ts - prev_ts).total_seconds()*1000,
+                              (ts.hour, ts.minute, ts.second, ts.microsecond / 1000,
+                               sz, sn, (ts - prev_ts).total_seconds() * 1000,
                                (' *' if i == len(history) - 1 else '')))
                         prev_ts = ts
                     history = history[-1:]
@@ -762,6 +761,5 @@ class Tello(object):
         log.info('exit from the video thread.')
 
 
-
 if __name__ == '__main__':
-    print('You can use test.py for testing.')
+    print('You can use canny_edge.py for testing.')
