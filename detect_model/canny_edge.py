@@ -1,7 +1,7 @@
 import cv2
 
 
-def canny_edge(title='Test', path=r"E:\source\drone-autonomous-escape\detect_model\2.mp4"):
+def canny_edge(title='Test', path=r"E:\Projects\drone-autonomous-escape\detect_model\1.mp4"):
     """a Canny edge detector.
 
     :param title: a window title.
@@ -36,5 +36,5 @@ def canny_edge(title='Test', path=r"E:\source\drone-autonomous-escape\detect_mod
     cv2.destroyAllWindows()
 
 
-if __name__ == '__main__':
-    canny_edge()
+#if __name__ == '__main__':
+   # canny_edge()
