@@ -58,7 +58,9 @@ class DroneVideo(object):
                     continue
                 start_time = time.time()
                 mid_img = cv2.cvtColor(np.array(frame.to_image()), cv2.COLOR_RGB2BGR)
-                self.vid = cv2.resize(mid_img, (self.w, self.h))
+                # use Canny edge.
+                edges = cv2.Canny(mid_img, 150, 200, apertureSize=3)
+                self.vid = cv2.resize(edges, (self.w, self.h))
 
                 self.object.set_vid(self.vid)
                 self.object.update()

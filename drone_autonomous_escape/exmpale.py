@@ -41,26 +41,28 @@ while True:
     tracker.is_new(VID.is_new())
     tracker.update_coords(VID.get_coords())
     tracker.export_data()
-    # if key 'q' is pressed
+    # if key '1' is pressed
     if keyboard.is_pressed('1'):
         if not KF.controller_on:
             drone.takeoff()
             KF.set_text("Take Off")
-    # if key 'q' is pressed
+    # if key '2' is pressed
     elif keyboard.is_pressed('2'):
         if not KF.controller_on:
             drone.land()
             KF.set_text("landing")
-    # if key 'q' is pressed
+    # if key '3' is pressed
     elif keyboard.is_pressed('3'):
         threading.Thread(target=down).start()
-    # if key 'q' is pressed
+    # if key '4' is pressed
     elif keyboard.is_pressed('4'):
         threading.Thread(target=route).start()
         KF.set_text("Auto pylot")
+    # if key '5' is pressed
     elif keyboard.is_pressed('5'):
         KF.start_control()
         KF.set_text("keyboard control")
+    # if key 'x' is pressed
     elif keyboard.is_pressed('x'):
         KF.set_text("End mission")
         break
