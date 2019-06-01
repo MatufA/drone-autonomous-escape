@@ -36,5 +36,5 @@ def canny_edge(title='Test', path=r"E:\Projects\drone-autonomous-escape\detect_m
     cv2.destroyAllWindows()
 
 
-#if __name__ == '__main__':
-   # canny_edge()
+if __name__ == '__main__':
+    canny_edge()

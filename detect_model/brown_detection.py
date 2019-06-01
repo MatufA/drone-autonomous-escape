@@ -28,6 +28,7 @@ def track_obj(frame, min_x, min_y, max_x, max_y):
             if w > 50 and h > 50:
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
     cv2.imshow("Mask", mask)
+    return frame
 
 
 def brown_detect(title='Test', path=r"2.mp4"):
@@ -46,14 +47,14 @@ def brown_detect(title='Test', path=r"2.mp4"):
     while True:
         ret, frame = cap.read()
         if ret:
-            track_obj(frame=frame, min_x=min_x, min_y=min_y, max_x=max_x, max_y=max_y)
+            frame = track_obj(frame=frame, min_x=min_x, min_y=min_y, max_x=max_x, max_y=max_y)
             # if max_x - min_x > 0 and max_y - min_y > 0:
             #     cv2.rectangle(frame, (min_x, min_y), (max_x, max_y), (255, 0, 0), 2)
 
             cv2.rectangle(frame, (target_x_min, target_y_min), (target_x_max, target_y_max), (255, 255, 0), 3)
             cv2.imshow(title, frame)
 
-            if cv2.waitKey(1) == 27:
+            if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
         else:
             break

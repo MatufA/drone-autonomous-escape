@@ -5,6 +5,7 @@ import time
 import threading
 from drone_autonomous_escape import GetObject
 from drone_autonomous_escape import Config
+import detect_model.brown_detection as detector
 
 
 class DroneVideo(object):
@@ -57,10 +58,12 @@ class DroneVideo(object):
                     self.frame_skip = self.frame_skip - 1
                     continue
                 start_time = time.time()
-                mid_img = cv2.cvtColor(np.array(frame.to_image()), cv2.COLOR_RGB2BGR)
-                # use Canny edge.
-                edges = cv2.Canny(mid_img, 150, 200, apertureSize=3)
-                self.vid = cv2.resize(edges, (self.w, self.h))
+                frm = np.array(frame.to_image())
+                min_x, min_y = frm.shape[:2]
+                mid_img = cv2.cvtColor(frm, cv2.COLOR_RGB2BGR)
+                # use color detector.
+                vid = detector.track_obj(frame=mid_img, min_x=min_x, min_y=min_y, max_x=0, max_y=0)
+                self.vid = cv2.resize(vid, (self.w, self.h))
 
                 self.object.set_vid(self.vid)
                 self.object.update()
