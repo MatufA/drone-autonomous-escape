@@ -11,7 +11,7 @@ import detect_model.brown_detection as detector
 class DroneVideo(object):
 
     def __init__(self, drone):
-        self.h = 225
+        self.h = 700
         # image ratio is 960:720
         self.w = self.h + int(self.h / 3)
         self.drone = drone
@@ -22,8 +22,7 @@ class DroneVideo(object):
         self.vid = None
         self.grid = True
         self.new_val = False
-        config = Config()
-        self.object = GetObject(config=config)
+        # self.object = GetObject(config=Config())
         self.object_coords = None
         self.out = None
         self.export_flag = False
@@ -62,17 +61,13 @@ class DroneVideo(object):
                 min_x, min_y = frm.shape[:2]
                 mid_img = cv2.cvtColor(frm, cv2.COLOR_RGB2BGR)
                 # use color detector.
-                vid = detector.track_obj(frame=mid_img, min_x=min_x, min_y=min_y, max_x=0, max_y=0)
+                vid = detector.track_obj(frame=mid_img, min_x=min_x, min_y=min_y, max_x=0, max_y=0, drone=self.drone)
                 self.vid = cv2.resize(vid, (self.w, self.h))
 
-                self.object.set_vid(self.vid)
-                self.object.update()
-                self.object_coords = self.object.get_coords()
-                self.new_val = self.object.is_new()
-                if self.new_val:
-                    coords_pxl = self.object.obj_pixel
-                    if type(coords_pxl) is not None:
-                        cv2.aruco.drawDetectedMarkers(self.vid, coords_pxl)
+                # self.object.set_vid(self.vid)
+                # self.object.update()
+                # self.object_coords = self.object.get_coords()
+                # self.new_val = self.object.is_new()
                 self.flag_show = True
                 if self.export_flag:
                     self.out.write(self.vid)
@@ -87,11 +82,11 @@ class DroneVideo(object):
             cv2.imshow("drone_vid", self.vid)
             cv2.waitKey(1)
 
-    def get_coords(self):
-        return self.object_coords
-
-    def get_coords_pixel(self):
-        return self.object.obj_pixel
-
-    def is_new(self):
-        return self.new_val
+    # def get_coords(self):
+    #     return self.object_coords
+    #
+    # def get_coords_pixel(self):
+    #     return self.object.obj_pixel
+    #
+    # def is_new(self):
+    #     return self.new_val

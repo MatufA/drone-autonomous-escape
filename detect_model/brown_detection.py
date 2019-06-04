@@ -1,8 +1,17 @@
 import cv2
 import numpy as np
+from drone_autonomous_escape import DroneControl
 
 
-def track_obj(frame, min_x, min_y, max_x, max_y):
+def escape(drone):
+    dc = DroneControl(drone=drone)
+    dc.right(dist=20) if np.random.uniform(0, 1) >= 0.6 else dc.left(dist=25)
+
+
+def track_obj(frame, min_x, min_y, max_x, max_y, drone):
+    width = frame.shape[0]
+    target_x_min = round(width) // 4
+    target_x_max = 3 * round(width) // 4
     blurred_frame = cv2.GaussianBlur(frame, (5, 5), cv2.BORDER_DEFAULT)
     hsv = cv2.cvtColor(blurred_frame, cv2.COLOR_BGR2HSV)
 
@@ -27,7 +36,12 @@ def track_obj(frame, min_x, min_y, max_x, max_y):
 
             if w > 50 and h > 50:
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
-    cv2.imshow("Mask", mask)
+                if min_y <= y <= min_y + 10 and max_y >= (y + w) >= max_y - 10 \
+                        and (target_x_min <= x <= target_x_max or target_x_min <= (x + w) <= target_x_max):
+                    print('-------------escaping---------------')
+                    escape(drone=drone)
+
+    # cv2.imshow("Mask", mask)
     return frame
 
 
@@ -52,7 +66,7 @@ def brown_detect(title='Test', path=r"2.mp4"):
             #     cv2.rectangle(frame, (min_x, min_y), (max_x, max_y), (255, 0, 0), 2)
 
             cv2.rectangle(frame, (target_x_min, target_y_min), (target_x_max, target_y_max), (255, 255, 0), 3)
-            cv2.imshow(title, frame)
+            # cv2.imshow(title, frame)
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break

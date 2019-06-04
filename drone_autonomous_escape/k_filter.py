@@ -46,7 +46,7 @@ class K_Filter(object):
                  times, self.measurements_a[:, 1], 'ro',
                  times, self.smoothed_state_means_a[:, 0], 'b--',
                  times, self.smoothed_state_means_a[:, 2], 'r--', )
-        plt.show()
+        # plt.show()
 
         plt.figure(1)
         times = range(self.measurements_b.shape[0])
@@ -54,7 +54,7 @@ class K_Filter(object):
                  times, self.measurements_b[:, 1], 'ro',
                  times, self.smoothed_state_means_b[:, 0], 'b--',
                  times, self.smoothed_state_means_b[:, 2], 'r--', )
-        plt.show()
+        # plt.show()
 
     def add_update_get(self, input):
         """ get tuple (1,1,3,4)-> split (1,1), (3,4) -> update and predition
