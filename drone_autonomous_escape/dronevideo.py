@@ -82,11 +82,11 @@ class DroneVideo(object):
             cv2.imshow("drone_vid", self.vid)
             cv2.waitKey(1)
 
-    # def get_coords(self):
-    #     return self.object_coords
-    #
-    # def get_coords_pixel(self):
-    #     return self.object.obj_pixel
-    #
-    # def is_new(self):
-    #     return self.new_val
+    def get_coords(self):
+        return self.object_coords
+
+    def get_coords_pixel(self):
+        return self.object.obj_pixel
+
+    def is_new(self):
+        return self.new_val

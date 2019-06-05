@@ -1,4 +1,4 @@
-from drone_autonomous_escape import DroneVideo, KeyboardFly
+from drone_autonomous_escape import DroneVideo, KeyboardFly, TrackObject
 from tello_api import Tello
 import keyboard
 import cv2
@@ -13,10 +13,17 @@ def main():
 
     kf = KeyboardFly(drone)
     vid = DroneVideo(drone)
+    tracker = TrackObject(drone)
+
+    tracker.set_export_data("test_j")
     vid.set_export_vid("test_j ")
 
     while True:
         vid.show_vid()
+        tracker.is_new(vid.is_new())
+        tracker.update_coords(vid.get_coords())
+        tracker.export_data()
+
         # if key '1' is pressed
         if keyboard.is_pressed('1'):
             if not kf.controller_on:
