@@ -2,6 +2,8 @@
 Our project focuses on a "DJI Tello" drone, making it autonomously evade obsticles.
 We focused on evading trees, by processing the video from the drone at real time, and built an algorithm which will make it avoid the trees.
 
+![alt text](https://forum44.djicdn.com/data/attachment/forum/201801/08/021138qlwja5t5mtbhhu2a.jpg)
+
 ### why havn't we used object detection methods like yolo/haar cascades/SSD?
 At first, we tried to find (unsuccessfully) a trained weights for haar cascades.
 So, we tried to train a haar cascade for detecting trees, but it's isn't fit to our goal.
@@ -32,8 +34,36 @@ After a lot of testing we found out that the best result for us (in outdoor gard
 
 Our [brown detector](detect_model/brown_detection.py) is an implementation of brown detector with OpenCV.
 
+## Python
+use Python 3.* [download here](https://www.python.org/downloads/).
 
+## Requirements
+* keyboard
+* av
+* pykalman
+* pygame
+* matplotlib
+* opencv-python
+* numpy
 
+## Usage
+* Clone our project from github:  
+````git
+git clone https://github.com/MatufA/drone-autonomous-escape.git
+````  
+* Run the project:  
+```bash
+python3 -m drone_autonomous_escape
+```
+## OpevCV Installation on Windows
+See instruction [here.](https://www.learnopencv.com/install-opencv3-on-windows/)
 
-# Credits
+## Authors
+* **Amit Nuni** - *Autonomous Drone project* - [Profile](https://github.com/nunii)
+* **Adiel Matuf** - *Autonomous Drone project* - [Profile](https://github.com/matufa)
+
+## License
+This project is licensed under the GNU License - see the [LICENSE](LICENSE) file for details.
+
+## Credits
 [ofikodar](https://github.com/ofikodar) for using his repository [drone-auto-landing](https://github.com/ofikodar/drone-auto-landing)
