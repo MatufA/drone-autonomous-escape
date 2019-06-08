@@ -48,9 +48,13 @@ use Python 3.* [download here](https://www.python.org/downloads/).
 
 ## Usage
 * Clone our project from github:  
-````git
+````bash
 git clone https://github.com/MatufA/drone-autonomous-escape.git
 ````  
+* Install requirements:
+```bash
+pip3 install -r requirements.txt
+```
 * Run the project:  
 ```bash
 python3 -m drone_autonomous_escape
