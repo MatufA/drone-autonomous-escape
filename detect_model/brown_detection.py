@@ -5,7 +5,8 @@ from drone_autonomous_escape import DroneControl
 
 def escape(drone):
     dc = DroneControl(drone=drone)
-    dc.right(dist=20) if np.random.uniform(0, 1) >= 0.6 else dc.left(dist=25)
+    dc.backward(dist=20)
+    dc.right(dist=30) if np.random.uniform(0, 1) >= 0.7 else dc.left(dist=25)
 
 
 def track_obj(frame, min_x, min_y, max_x, max_y, drone):
