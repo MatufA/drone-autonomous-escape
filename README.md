@@ -44,7 +44,7 @@ Our [brown detector](detect_model/brown_detection.py) is an implementation of HS
 ## A place to improve
 As you can see, our method is not the best. But for our case it's more than enough.
 We used a specific location at our university while we know enviroment outline.
-Detecting the trees by processing the image colors is probably not good enough for moving objects,
+Detecting objects by processing the image colors is probably not good enough for moving objects,
 or for detecting objects at high speed.
 
 ## Future research
