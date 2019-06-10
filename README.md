@@ -4,7 +4,7 @@ We focused on evading trees, by processing the video from the drone at real time
 
 ![alt text](https://forum44.djicdn.com/data/attachment/forum/201801/08/021138qlwja5t5mtbhhu2a.jpg)
 
-### why havn't we used object detection methods like yolo/haar cascades/SSD?
+### Why havn't we used object detection methods like yolo/haar cascades/SSD?
 At first, we tried to find (unsuccessfully) a trained weights for haar cascades.
 Then, we tried to train a haar cascade for detecting trees, but it didn't fit to our goal.
 
@@ -37,6 +37,10 @@ After a lot of testing we found out that the best result for us (in outdoor gard
 * V(B) range is 20 - 100.
 
 Our [brown detector](detect_model/brown_detection.py) is an implementation of HSV brown detector with OpenCV.
+
+## Future research
+## H5 How to detect a pop up object?
+
 
 ## Python
 use Python 3.* [download here](https://www.python.org/downloads/).
