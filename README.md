@@ -8,7 +8,7 @@ We focused on evading trees, by processing the video from the drone at real time
 At first, we tried to find (unsuccessfully) a trained weights for haar cascades.
 Then, we tried to train a haar cascade for detecting trees, but it didn't fit to our goal.
 
-We also tried to use [SSD]https://arxiv.org/abs/1512.02325)
+We also tried to use [SSD](https://arxiv.org/abs/1512.02325)
  (Single Shot Multi-box Detection), but SSD isn't doing really well in real time on our hardware. (for 30 FPS minimum, with our hardware)
 
 After that, we try to useYoloV3, Yolo could've been great for detect an object in real time. 
