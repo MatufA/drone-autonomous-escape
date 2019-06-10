@@ -38,7 +38,7 @@ After a lot of testing we found out that the best result for us (in outdoor gard
 
 Our [brown detector](detect_model/brown_detection.py) is an implementation of HSV brown detector with OpenCV.
 
-![alt text](https://imgur.com/6PA03ER)
+![alt text](C:\Users\Amit\Pictures\Capture.PNG)
 
 
 ## Future research
