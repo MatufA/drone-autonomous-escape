@@ -4,6 +4,9 @@ We focused on evading trees, by processing the video from the drone at real time
 
 ![alt text](https://forum44.djicdn.com/data/attachment/forum/201801/08/021138qlwja5t5mtbhhu2a.jpg)
 
+## Demo
+[![Alt text](https://img.youtube.com/vi/YYAugvMTeuo/0.jpg)](https://www.youtube.com/watch?v=YYAugvMTeuo)
+
 ### Why havn't we used object detection methods like yolo/haar cascades/SSD?
 At first, we tried to find (unsuccessfully) a trained weights for haar cascades.
 Then, we tried to train a haar cascade for detecting trees, but it didn't fit to our goal.
