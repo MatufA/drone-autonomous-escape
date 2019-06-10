@@ -38,6 +38,9 @@ After a lot of testing we found out that the best result for us (in outdoor gard
 
 Our [brown detector](detect_model/brown_detection.py) is an implementation of HSV brown detector with OpenCV.
 
+![alt text](https://www.photobox.co.uk/my/photo/full?photo_id=501921072820)
+
+
 ## Future research
 ## H5 How to detect a pop up object?
 
