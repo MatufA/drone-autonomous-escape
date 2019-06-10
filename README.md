@@ -9,20 +9,22 @@ At first, we tried to find (unsuccessfully) a trained weights for haar cascades.
 Then, we tried to train a haar cascade for detecting trees, but it didn't fit to our goal.
 
 We also tried to use [SSD](https://arxiv.org/abs/1512.02325)
- (Single Shot Multi-box Detection), but SSD isn't doing really well in real time on our hardware. (for 30 FPS minimum, with our hardware)
+ (Single Shot Multi-box Detection), but SSD isn't doing really well in real time on our hardware (for 30 FPS minimum).
 
-After that, we try to useYoloV3, Yolo could've been great for detect an object in real time. 
-We decide to train our costume object but we had a lot of problem with YoloV3, C++ and Python.
-So, we look for a weight and found a weight for 9000+ object (with a lot of tree type, perfect for our mission) 
-but it also wasn't fast enough. (for 30 FPS minimum, with our hardware)
+After that, we tried to use YoloV3, Yolo could've been great for detecting an object in real time. 
+We decided to train a custom object detector but we had a lot of issues with YoloV3, C++ and Python.
+So, we searched for a pre-trained weights and found weights for 9000+ object (with a lot of trees type, perfect for our mission) 
+but it also wasn't fast enough (for 30 FPS minimum, with our hardware).
 
 
-Finally, we decide to try using HSV to detect a specific range of brown.
-In the start we get a lot of detection, noise. So, we try to minimize the noise with Opencv but it wasn't good enough.
-After testing and with the help of Dr. Boaz we found that when the drone is about to crash into a tree the tree is 
-detect from bottom up. we start with a simple model. (describe below)
+Finally, we decideed to try some image processing manipulations with OpenCV in order to detect a specific range of brown.
+The best method we found was detecting brown contours using HSV.
+At the beginning we got a lot of detection, noise. So, we tried to minimize the noise but it wasn't good enough due to over detection.
+After testing, and with the help of Dr. Ben-Moshe we found that when the drone is about to crash into a tree, the tree is 
+detected from bottom up. we started with a simple model which is described below.
 
-### HSV - range of brown detection.
+### HSV - range of brown detection. 
+![alt text](https://en.wikipedia.org/wiki/HSL_and_HSV#/media/File:HSV_color_solid_cylinder_saturation_gray.png)
 HSV is a Hue Saturation Value(Brightness). HSV is defined in a way that is similar to how humans perceive color. 
 It's based on three values: hue, saturation, and value. This color space describes colors (hue or tint) in terms of 
 their shade (saturation or amount of gray) and their brightness value. Some color pickers use the acronym HSB, which 
