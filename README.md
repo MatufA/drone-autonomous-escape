@@ -23,19 +23,19 @@ At the beginning we got a lot of detection, noise. So, we tried to minimize the 
 After testing, and with the help of Dr. Ben-Moshe we found that when the drone is about to crash into a tree, the tree is 
 detected from bottom up. we started with a simple model which is described below.
 
-### HSV - range of brown detection. 
+### HSV 
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/3/33/HSV_color_solid_cylinder_saturation_gray.png)
 HSV is a Hue Saturation Value(Brightness). HSV is defined in a way that is similar to how humans perceive color. 
 It's based on three values: hue, saturation, and value. This color space describes colors (hue or tint) in terms of 
 their shade (saturation or amount of gray) and their brightness value. Some color pickers use the acronym HSB, which 
-substitutes the term brightness for value, but HSV and HSB refer to the same color model. (a short explanation from 
-[lifewire](https://www.lifewire.com/what-is-hsv-in-design-1078068)).  
-After a lot of testing we found out that the best result for us (in outdoor gardens):  
+substitutes the term brightness for value, but HSV and HSB refer to the same color model. 
+a short explanation from [lifewire](https://www.lifewire.com/what-is-hsv-in-design-1078068).  
+After a lot of testing we found out that the best result for us (in outdoor gardens, at sunny days):  
 * H range is 10 - 20.
 * S range is 20 - 150.
 * V(B) range is 20 - 100.
 
-Our [brown detector](detect_model/brown_detection.py) is an implementation of brown detector with OpenCV.
+Our [brown detector](detect_model/brown_detection.py) is an implementation of HSV brown detector with OpenCV.
 
 ## Python
 use Python 3.* [download here](https://www.python.org/downloads/).
