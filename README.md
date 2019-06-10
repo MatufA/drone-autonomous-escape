@@ -29,8 +29,8 @@ HSV is a Hue Saturation Value(Brightness). HSV is defined in a way that is simil
 It's based on three values: hue, saturation, and value. This color space describes colors (hue or tint) in terms of 
 their shade (saturation or amount of gray) and their brightness value. Some color pickers use the acronym HSB, which 
 substitutes the term brightness for value, but HSV and HSB refer to the same color model.
+a short explanation from [lifewire](https://www.lifewire.com/what-is-hsv-in-design-1078068). 
 
-a short explanation from [lifewire](https://www.lifewire.com/what-is-hsv-in-design-1078068).  
 After a lot of testing we found out that the best result for us (in outdoor gardens, at sunny days):  
 * H range is 10 - 20.
 * S range is 20 - 150.
