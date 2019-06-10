@@ -6,9 +6,10 @@ We focused on evading trees, by processing the video from the drone at real time
 
 ### why havn't we used object detection methods like yolo/haar cascades/SSD?
 At first, we tried to find (unsuccessfully) a trained weights for haar cascades.
-So, we tried to train a haar cascade for detecting trees, but it's isn't fit to our goal.
+Then, we tried to train a haar cascade for detecting trees, but it didn't fit to our goal.
 
-Then, we try to use SSD, but SSD isn't doing really well in real time. (for 30 FPS minimum, with our hardware)
+We also tried to use [SSD]https://arxiv.org/abs/1512.02325)
+ (Single Shot Multi-box Detection), but SSD isn't doing really well in real time on our hardware. (for 30 FPS minimum, with our hardware)
 
 After that, we try to useYoloV3, Yolo could've been great for detect an object in real time. 
 We decide to train our costume object but we had a lot of problem with YoloV3, C++ and Python.
