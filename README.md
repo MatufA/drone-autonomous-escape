@@ -24,7 +24,7 @@ After testing, and with the help of Dr. Ben-Moshe we found that when the drone i
 detected from bottom up. we started with a simple model which is described below.
 
 ### HSV - range of brown detection. 
-![alt text](https://en.wikipedia.org/wiki/HSL_and_HSV#/media/File:HSV_color_solid_cylinder_saturation_gray.png)
+![alt text](https://upload.wikimedia.org/wikipedia/commons/3/33/HSV_color_solid_cylinder_saturation_gray.png)
 HSV is a Hue Saturation Value(Brightness). HSV is defined in a way that is similar to how humans perceive color. 
 It's based on three values: hue, saturation, and value. This color space describes colors (hue or tint) in terms of 
 their shade (saturation or amount of gray) and their brightness value. Some color pickers use the acronym HSB, which 
